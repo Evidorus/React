@@ -33,7 +33,23 @@ export class App extends React.Component {
         this.state.calculateWater();
       },
       calculateWater : () => {
-        return this.setState({water:this.state.heart})
+        let water = this.state.water;
+        if (this.state.temperature > 20) {
+          const nbSup20 = this.state.temperature - 20;
+          const nbLitreToAdd = 0.02 * nbSup20;
+          water = water + nbLitreToAdd;
+        }
+        if (this.state.heart > 120) {
+          const nbHeartBeatSup = this.state.heart -120;
+          const nbHeartToAdd = 0.0008 * nbHeartBeatSup;
+          water = water + nbHeartToAdd;
+        }
+        if (this.state.steps > 10000) {
+          const nbStepsSup = this.state.steps -120;
+          const nbHeartToAdd = 0.0008 * nbStepsSup;
+          water = water + nbHeartToAdd;
+        }
+        
       }
     }
   }
@@ -47,7 +63,7 @@ export class App extends React.Component {
           <p>Temperature : {tempMin}</p>
           <p>Steps : {stepsMin}</p>
           {/* Water */}
-          <Box icon={"local_drink"} color={"#3A85FF"} min={waterMin} max={waterMax} value={this.state.water} unit={"L"} onChange={this.state.calculateWater}/>
+          <Box icon={"local_drink"} color={"#3A85FF"} min={waterMin} max={waterMax} value={this.state.water} unit={"L"} />
           {/* Steps */}
           <Box icon={"directions_walk"} color={"black"} min={stepsMin} max={stepsMax} value={this.state.steps} unit={"steps"} onChange={this.state.onStepsChange}/>
           {/* Heart */}
