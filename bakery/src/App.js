@@ -23,6 +23,7 @@ export default class App extends React.Component {
   selectAdd(){
     this.setState({
       activeTab : "Add",
+      baka :""
     });
   };
 
