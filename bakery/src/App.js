@@ -5,6 +5,7 @@ import Add from "./components/Add";
 import List from "./components/List";
 import Pay from "./components/Pay";
 import Button from "./components/Button";
+import Promo from "./components/Revision"
 
 
 export default class App extends React.Component {
@@ -23,7 +24,6 @@ export default class App extends React.Component {
   selectAdd(){
     this.setState({
       activeTab : "Add",
-      baka :""
     });
   };
 
@@ -64,6 +64,7 @@ export default class App extends React.Component {
                 <Button onChange={this.selectList} isSelected={this.state.activeTab === "List" ? "form-control btn btn-primary" : "form-control btn btn-light"}>List</Button>
                 <Button onChange={this.selectPay} isSelected={this.state.activeTab === "Pay" ? "form-control btn btn-primary" : "form-control btn btn-light"}>Pay</Button>
                 <List baka={this.state.items}/>
+                <Promo></Promo>
               </div>)
     }
     if (this.state.activeTab === "Pay") {

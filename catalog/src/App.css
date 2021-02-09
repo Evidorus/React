@@ -1,0 +1,30 @@
+.titre{
+    text-align: center;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    padding: 50px;
+}
+
+.fond{
+    background: url("./a-movie-clapper-board-film-roll-and-sprocket-wheel.jpg") no-repeat center / cover;
+    height: 750px;
+}
+
+.liens{
+    display: flex;
+    justify-content: center;
+    gap: 4%;
+}
+
+.baka{
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding: 20px 10px 20px 10px;
+}
+
+a:hover{
+    cursor: pointer;
+    transform: rotate3d(1, 2.0, 3.0, 10deg)
+}
