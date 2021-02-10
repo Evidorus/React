@@ -2,6 +2,7 @@ import React from "react"
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import './App.css';
 import Films from "./components/Films"
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 
 const movies = [
   {
@@ -123,7 +124,19 @@ export default class App extends React.Component{
             }}
             />
         </Switch>
-      </div>   
+        
+      </div> 
+      <Map center={[48.85341930075226, 2.4029475982454684]} zoom={15} scrollWheelZoom={true}>
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={[48.85341930075226, 2.4029475982454684]}>
+            <Popup>
+              Konexio !
+            </Popup>
+          </Marker>
+        </Map>  
       </BrowserRouter>
     )
   }
