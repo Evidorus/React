@@ -2,7 +2,6 @@ import React from "react"
 import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import './App.css';
 import Films from "./components/Films"
-import Film from "./components/Film"
 
 const movies = [
   {
@@ -100,36 +99,13 @@ export default class App extends React.Component{
       image: "",
       description:"",
     }
-    this.GetFilmById = this.GetFilmById.bind(this)
-  }
-
-  componentDidMount(){
-  }
-
-  GetFilmById(id) {
-    movies
-    .filter((movie) => { return movie.id === id })
-    .map((movie) => {
-      return (
-        <div>
-          <p>ID : {movie.id}</p>
-          <p>Title : {movie.title}</p>
-          <p>Director : {movie.director}</p>
-          <p>Stars : {movie.stars}</p>
-          <p>Image : {movie.image}</p>
-          <p>Description : {movie.description}</p>
-        </div>
-      )
-    })
-    this.setState({
-    })
   }
 
   render(){
     
   const newMovies = movies.map((movie) => {
     return (
-      <a className="baka" onClick="">{movie.title}</a>
+      <Link to={`/movie/${movie.id}`} className="baka">{movie.title}</Link>
     )
   })
     return(
@@ -139,12 +115,13 @@ export default class App extends React.Component{
         <div className="liens">
           {newMovies}
         </div>
-        <Link to={"/Films"}></Link>
         <Switch>
           <Route 
-            path="/Films/:id"
-            render={(props) => <Films film={this.GetFilmById}></Films>}
-          />
+            path="/movie/:id"
+            render={(props) => {
+              return <Films {...props} movies={movies}/>
+            }}
+            />
         </Switch>
       </div>   
       </BrowserRouter>
