@@ -4,32 +4,39 @@ export default class Popular extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            movies: "",
+            movies: [],
         }
     }
 
     componentDidMount(){
-        this.getFilms()
-    }
-
-    getFilms(){
         fetch("https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=ca6a8c7473b663934ff3f280ebf2cfb8")
         .then(response => response.json())
         .then(result => {
             console.log(result)
-            result.map((films) => {
-                return (films === result.results.original_title)
-            })
             this.setState({
-                movies: result.original_title
-            })
+                movies: result.results
+            }) 
+            console.log("aaaa",this.state.movies.length)
         })
         .catch(error => console.error(error))
     }
 
     render(){
+        console.log("render",this.state.movies.length)
+
+        // const movies = this.state.movies
+        
         return(
-            <h1>{this.state.movies}</h1>
+            <div>
+                {this.state.movies
+                    .map((movie, index) => {
+                        return(
+                            <div>
+                                <p key={index}>{movie.title}</p>
+                            </div>
+                    )
+                })}
+            </div>
         )
     }
 }
