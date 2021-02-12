@@ -1,4 +1,6 @@
 import React from "react"
+import Card from "./Card"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Popular extends React.Component{
     constructor(props){
@@ -18,6 +20,12 @@ export default class Popular extends React.Component{
             }) 
             console.log("aaaa",this.state.movies.length)
         })
+        fetch(`https://image.tmdb.org/t/p/w300/${this.state.movies.poster_path}`)
+        .then(response => response.blob())
+        .then(resultat => {
+            console.log(resultat)
+            
+        })
         .catch(error => console.error(error))
     }
 
@@ -31,8 +39,9 @@ export default class Popular extends React.Component{
                 {this.state.movies
                     .map((movie, index) => {
                         return(
-                            <div>
-                                <p key={index}>{movie.title}</p>
+                            <div className="d-flex justify-content-center">
+                                {/* <p key={index}>{movie.title}</p> */}
+                                <Card key={index} titre={movie.title} date={movie.release_date} description={movie.overview} affiche={movie.poster_path} {...this.state.movies}></Card>
                             </div>
                     )
                 })}

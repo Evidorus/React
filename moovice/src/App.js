@@ -6,6 +6,7 @@ import Popular from "./components/popular"
 import PopularBattle from "./components/popular-battle"
 import Favorites from "./components/favorites"
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class App extends React.Component{
   constructor(props){
@@ -18,14 +19,33 @@ export default class App extends React.Component{
   render(){
     return(
       <BrowserRouter>
-        <h1>Bienvenue sur mon site</h1>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+          <a class="navbar-brand" href="#">CpasBien</a>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <Link class="nav-link" to={"/weekly"}>Weekly</Link> 
+            </li>
+            <li class="nav-item">
+              <Link class="nav-link" to={"/weekly-battle"}>Weekly-Battle</Link>
+            </li>
+            <li class="nav-item">
+              <Link class="nav-link" to={"/popular"}>Popular</Link>
+            </li>
+            <li class="nav-item">
+              <Link class="nav-link" to={"/popular-battle"}>Popular-Battle</Link>
+            </li>
+            <li class="nav-item">
+              <Link class="nav-link" to={"/favorites"}>Favorites</Link>
+            </li>
+          </ul>
+        </nav>
+        {/* <h1>Bienvenue sur mon site</h1>
         <nav>
-          <Link to={"/weekly"}>Weekly</Link>
-          <Link to={"/weekly-battle"}>Weekly-Battle</Link>
-          <Link to={"/popular"}>Popular</Link>
-          <Link to={"/popular-battle"}>Popular-Battle</Link>
-          <Link to={"/favorites"}>Favorites</Link>
-        </nav> 
+          
+          
+          <Link </Link>
+          <Link </Link>
+        </nav>  */}
 
         <Switch>
           <Route 
